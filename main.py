@@ -69,8 +69,8 @@ def main():
         help="Hide the tokenized text."
     )
     parser.add_argument(
-        '--stats', action="store_true",
-        help="Display token and character counts at the end."
+        '--hide-stats', action="store_true",
+        help="Hide the token and character counts at the end."
     )
     parser.add_argument(
         '--force-terminal', action="store_true", default=None,
@@ -78,6 +78,10 @@ def main():
     )
 
     args = parser.parse_args()
+
+    if args.hide_text and args.hide_stats:
+        parser.error("Cannot hide both text and stats.")
+
     console = Console(force_terminal=args.force_terminal)
 
     input_text = ""
@@ -94,7 +98,7 @@ def main():
         rich_text = colorize_tokens(tokens, args.mode)
         console.print(rich_text)
 
-    if args.stats:
+    if not args.hide_stats:
         stats = calculate_stats(input_text, tokens)
         if not args.hide_text and input_text:
             console.print()
