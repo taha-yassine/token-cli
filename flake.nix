@@ -38,6 +38,7 @@
           packages = with pkgs; [
             python312
             uv
+            vhs
           ];
           env = {
             CC = "${pkgs.gcc}/bin/gcc";

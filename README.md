@@ -1,6 +1,6 @@
-# Token CLI
+<h1 align="center">Token CLI</h1>
 
-A command-line tool to visualize tokenized text.
+<p align="center">A command-line tool to visualize tokenized text.</p>
 
 ![Demo](demo.gif)
 
