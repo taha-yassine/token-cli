@@ -1,13 +1,21 @@
 [project]
 name = "token-cli"
 version = "0.1.0"
-description = "Add your description here"
+description = "A command-line tool to visualize tokenized text."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.9"
+authors = [
+  { name="Taha Yassine", email="taha.yssne@gmail.com" },
+]
+license = "MIT"
 dependencies = [
     "rich>=13.0.0",
     "tiktoken>=0.8.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/taha-yassine/token-cli"
+Repository = "https://github.com/taha-yassine/token-cli"
 
 [project.scripts]
 token-cli = "main:main"
