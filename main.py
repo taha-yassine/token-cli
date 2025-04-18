@@ -2,7 +2,7 @@ import argparse
 import sys
 from rich.console import Console
 from rich.text import Text
-from tiktoken import encoding_for_model
+from tiktoken import get_encoding, list_encoding_names
 
 COLORS = [
     {   # Purple
@@ -27,8 +27,8 @@ COLORS = [
     }
 ]
 
-def tokenize(text):
-    tokenizer = encoding_for_model("gpt-4o")
+def tokenize(text, encoding_name="gpt-4o"):
+    tokenizer = get_encoding(encoding_name)
     tokens = [t.decode('utf-8', errors='replace') for t in tokenizer.decode_tokens_bytes(tokenizer.encode(text, allowed_special="all"))]
     return tokens
 
@@ -59,6 +59,10 @@ def main():
         'input_file', nargs='?', type=argparse.FileType('r'),
         default=sys.stdin,
         help="Path to the input text file. Reads from stdin if not provided."
+    )
+    parser.add_argument(
+        '--tokenizer', type=str, default="o200k_base",
+        help="Tokenizer to use for tokenization. Possible values: " + ", ".join(list_encoding_names()) + " (default: o200k_base)"
     )
     parser.add_argument(
         '--mode', choices=['text', 'highlight'], default='highlight',
@@ -92,7 +96,7 @@ def main():
         if args.input_file is not sys.stdin:
             args.input_file.close()
 
-    tokens = tokenize(input_text)
+    tokens = tokenize(input_text, args.tokenizer)
 
     if not args.hide_text:
         rich_text = colorize_tokens(tokens, args.mode)
