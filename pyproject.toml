@@ -18,7 +18,7 @@ Homepage = "https://github.com/taha-yassine/token-cli"
 Repository = "https://github.com/taha-yassine/token-cli"
 
 [project.scripts]
-token-cli = "main:main"
+token-cli = "token_cli.main:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]
