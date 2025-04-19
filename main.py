@@ -106,7 +106,7 @@ def main():
         stats = calculate_stats(input_text, tokens)
         if not args.hide_text and input_text:
             console.print()
-        console.print(f"{stats['tokens']} tokens, {stats['characters']} characters")
+        console.print(f"{stats['tokens']} tokens, {stats['characters']} characters, ratio: {stats['characters'] / stats['tokens']:.2f} chars/token")
 
 if __name__ == "__main__":
     main()
