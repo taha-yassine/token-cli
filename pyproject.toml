@@ -7,7 +7,7 @@ requires-python = ">=3.9"
 authors = [
   { name="Taha Yassine", email="taha.yssne@gmail.com" },
 ]
-license = "MIT"
+license = { text = "MIT" } # TODO: replace with simple string when setuptools>=77.0 hits nixpkgs stable
 dependencies = [
     "rich>=13.0.0",
     "tiktoken>=0.8.0",
